@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Scope;
 use Symfony\Component\HttpFoundation\Request;
 
-class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
+class AsseticExtensionTest extends \PHPUnit\Framework\TestCase
 {
     private $kernel;
 
@@ -246,7 +246,8 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidYuiConfig()
     {
-        $this->setExpectedException('RuntimeException', 'assetic.filters.yui_js');
+        $this->expectException('RuntimeException');
+        $this->expectExceptionMessage('assetic.filters.yui_js');
 
         $this->container->addCompilerPass(new CheckYuiFilterPass());
 

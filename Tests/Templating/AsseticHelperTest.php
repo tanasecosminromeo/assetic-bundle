@@ -15,7 +15,7 @@ use Assetic\Asset\AssetInterface;
 use Assetic\Factory\AssetFactory;
 use Symfony\Bundle\AsseticBundle\Templating\AsseticHelper;
 
-class AsseticHelperTest extends \PHPUnit_Framework_TestCase
+class AsseticHelperTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

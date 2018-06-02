@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @group functional
  */
-class FunctionalTest extends \PHPUnit_Framework_TestCase
+class FunctionalTest extends \PHPUnit\Framework\TestCase
 {
     private $cacheDir;
 

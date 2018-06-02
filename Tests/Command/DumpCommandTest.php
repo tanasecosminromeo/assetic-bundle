@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\NullOutput;
 
-class DumpCommandTest extends \PHPUnit_Framework_TestCase
+class DumpCommandTest extends \PHPUnit\Framework\TestCase
 {
     private $writeTo;
     private $application;

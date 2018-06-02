@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests\Factory\Resource;
 
 use Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource;
 
-class CoalescingDirectoryResourceTest extends \PHPUnit_Framework_TestCase
+class CoalescingDirectoryResourceTest extends \PHPUnit\Framework\TestCase
 {
     public function testFiltering()
     {

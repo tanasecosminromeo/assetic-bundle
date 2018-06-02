@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests;
 
 use Symfony\Bundle\AsseticBundle\FilterManager;
 
-class FilterManagerTest extends \PHPUnit_Framework_TestCase
+class FilterManagerTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

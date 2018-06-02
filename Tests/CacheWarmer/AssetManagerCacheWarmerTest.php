@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests\CacheWarmer;
 
 use Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer;
 
-class AssetManagerCacheWarmerTest extends \PHPUnit_Framework_TestCase
+class AssetManagerCacheWarmerTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {
