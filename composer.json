@@ -21,7 +21,7 @@
         "symfony/http-kernel": "~2.3|~3.0",
         "symfony/templating": "~2.3|~3.0",
         "symfony/yaml": "~2.3|~3.0",
-        "kriswallsmith/assetic": "~1.4"
+        "sanpi/assetic": "~1.5"
     },
     "require-dev": {
         "patchwork/jsqueeze": "~1.0",
