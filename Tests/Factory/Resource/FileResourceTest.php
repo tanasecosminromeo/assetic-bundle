@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests\Factory\Resource;
 
 use Symfony\Bundle\AsseticBundle\Factory\Resource\FileResource;
 
-class FileResourceTest extends \PHPUnit_Framework_TestCase
+class FileResourceTest extends \PHPUnit\Framework\TestCase
 {
     private $loader;
 

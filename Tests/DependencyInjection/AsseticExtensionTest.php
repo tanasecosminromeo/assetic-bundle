@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Scope;
 use Symfony\Component\HttpFoundation\Request;
 
-class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
+class AsseticExtensionTest extends \PHPUnit\Framework\TestCase
 {
     private $kernel;
 
@@ -66,17 +66,21 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
         }
         // Symfony <2.7 BC
         if (class_exists('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\AssetsHelper')) {
-            $this->container->register('assets.packages', $this->getMockClass('Symfony\\Component\\Asset\\Packages'));
+            $this->container->register('assets.packages', $this->getMockClass('Symfony\\Component\\Asset\\Packages'))
+                ->setPublic(true);
             $this->container->register('templating.helper.assets', $this->getMockClass('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\AssetsHelper'))
-                ->addArgument(new Reference('assets.packages'));
+                ->addArgument(new Reference('assets.packages'))
+                ->setPublic(true);
         } elseif (class_exists('Symfony\\Component\\Templating\\Helper\\CoreAssetsHelper')) {
             $this->container->register('templating.helper.assets', $this->getMockClass('Symfony\\Component\\Templating\\Helper\\CoreAssetsHelper'))
                 ->addArgument(new Definition($this->getMockClass('Symfony\Component\Templating\Asset\PackageInterface')));
         }
         $this->container->register('templating.helper.router', $this->getMockClass('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\RouterHelper'))
-            ->addArgument(new Definition($this->getMockClass('Symfony\\Component\\Routing\\RouterInterface')));
+            ->addArgument(new Definition($this->getMockClass('Symfony\\Component\\Routing\\RouterInterface')))
+            ->setPublic(true);
         $this->container->register('twig', 'Twig_Environment')
-            ->addArgument(new Definition($this->getMockClass('Twig_LoaderInterface')));
+            ->addArgument(new Definition($this->getMockClass('Twig_LoaderInterface')))
+            ->setPublic(true);
         $this->container->setParameter('kernel.bundles', array());
         $this->container->setParameter('kernel.cache_dir', __DIR__);
         $this->container->setParameter('kernel.debug', false);
@@ -128,14 +132,12 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
             array('autoprefixer'),
             array('closure', array('jar' => '/path/to/closure.jar')),
             array('coffee'),
-            array('compass'),
             array('csscachebusting'),
             array('cssembed', array('jar' => '/path/to/cssembed.jar')),
             array('cssimport'),
             array('cssmin'),
             array('cssrewrite'),
             array('dart'),
-            array('emberprecompile'),
             array('gss'),
             array('handlebars'),
             array('jpegoptim'),
@@ -246,7 +248,8 @@ class AsseticExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidYuiConfig()
     {
-        $this->setExpectedException('RuntimeException', 'assetic.filters.yui_js');
+        $this->expectException('RuntimeException');
+        $this->expectExceptionMessage('assetic.filters.yui_js');
 
         $this->container->addCompilerPass(new CheckYuiFilterPass());
 

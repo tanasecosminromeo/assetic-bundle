@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests\Factory;
 
 use Symfony\Bundle\AsseticBundle\Factory\AssetFactory;
 
-class AssetFactoryTest extends \PHPUnit_Framework_TestCase
+class AssetFactoryTest extends \PHPUnit\Framework\TestCase
 {
     private $kernel;
     private $factory;

@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @group functional
  */
-class FunctionalTest extends \PHPUnit_Framework_TestCase
+class FunctionalTest extends \PHPUnit\Framework\TestCase
 {
     private $cacheDir;
 
@@ -26,10 +26,6 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
     {
         if (!class_exists('Assetic\\AssetManager')) {
             $this->markTestSkipped('Assetic is not available.');
-        }
-
-        if (!class_exists('Symfony\Component\ClassLoader\ClassLoader')) {
-            $this->markTestSkipped('Symfony ClassLoader is not available.');
         }
 
         $this->cacheDir = __DIR__.'/Resources/cache';

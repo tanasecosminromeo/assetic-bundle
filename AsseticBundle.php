@@ -24,6 +24,10 @@ class AsseticBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
+        if (version_compare(PHP_VERSION, '7.1', '<=')) {
+            @trigger_error('assetic-bundle will drop support for PHP < 7.1 in version 3.0.', E_USER_DEPRECATED);
+        }
+
         $container->addCompilerPass(new Compiler\TemplateResourcesPass());
         $container->addCompilerPass(new Compiler\CheckClosureFilterPass());
         $container->addCompilerPass(new Compiler\CheckCssEmbedFilterPass());

@@ -13,7 +13,7 @@ namespace Symfony\Bundle\AsseticBundle\Tests\Controller;
 
 use Symfony\Bundle\AsseticBundle\Controller\AsseticController;
 
-class AsseticControllerTest extends \PHPUnit_Framework_TestCase
+class AsseticControllerTest extends \PHPUnit\Framework\TestCase
 {
     private $request;
     private $headers;
@@ -44,7 +44,7 @@ class AsseticControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testRenderNotFound()
     {
-        $this->setExpectedException('Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException');
+        $this->expectException('Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException');
 
         $name = 'foo';
 
