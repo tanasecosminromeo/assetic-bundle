@@ -28,10 +28,6 @@ class FunctionalTest extends \PHPUnit\Framework\TestCase
             $this->markTestSkipped('Assetic is not available.');
         }
 
-        if (!class_exists('Symfony\Component\ClassLoader\ClassLoader')) {
-            $this->markTestSkipped('Symfony ClassLoader is not available.');
-        }
-
         $this->cacheDir = __DIR__.'/Resources/cache';
         if (file_exists($this->cacheDir)) {
             $filesystem = new Filesystem();
