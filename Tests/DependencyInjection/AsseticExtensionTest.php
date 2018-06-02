@@ -66,17 +66,21 @@ class AsseticExtensionTest extends \PHPUnit\Framework\TestCase
         }
         // Symfony <2.7 BC
         if (class_exists('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\AssetsHelper')) {
-            $this->container->register('assets.packages', $this->getMockClass('Symfony\\Component\\Asset\\Packages'));
+            $this->container->register('assets.packages', $this->getMockClass('Symfony\\Component\\Asset\\Packages'))
+                ->setPublic(true);
             $this->container->register('templating.helper.assets', $this->getMockClass('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\AssetsHelper'))
-                ->addArgument(new Reference('assets.packages'));
+                ->addArgument(new Reference('assets.packages'))
+                ->setPublic(true);
         } elseif (class_exists('Symfony\\Component\\Templating\\Helper\\CoreAssetsHelper')) {
             $this->container->register('templating.helper.assets', $this->getMockClass('Symfony\\Component\\Templating\\Helper\\CoreAssetsHelper'))
                 ->addArgument(new Definition($this->getMockClass('Symfony\Component\Templating\Asset\PackageInterface')));
         }
         $this->container->register('templating.helper.router', $this->getMockClass('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\RouterHelper'))
-            ->addArgument(new Definition($this->getMockClass('Symfony\\Component\\Routing\\RouterInterface')));
+            ->addArgument(new Definition($this->getMockClass('Symfony\\Component\\Routing\\RouterInterface')))
+            ->setPublic(true);
         $this->container->register('twig', 'Twig_Environment')
-            ->addArgument(new Definition($this->getMockClass('Twig_LoaderInterface')));
+            ->addArgument(new Definition($this->getMockClass('Twig_LoaderInterface')))
+            ->setPublic(true);
         $this->container->setParameter('kernel.bundles', array());
         $this->container->setParameter('kernel.cache_dir', __DIR__);
         $this->container->setParameter('kernel.debug', false);
