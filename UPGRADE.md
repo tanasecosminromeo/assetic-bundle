@@ -1,3 +1,8 @@
+Changes in version 2.9
+----------------------
+
+ * Deprecated php < 7.1
+
 Changes in version 2.4
 ----------------------
 
