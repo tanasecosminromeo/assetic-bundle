@@ -33,6 +33,9 @@
         "symfony/css-selector": "~2.3|~3.0",
         "symfony/phpunit-bridge": "~2.7|~3.0"
     },
+    "replace": {
+        "symfony/assetic-bundle": "self.version"
+    },
     "conflict": {
         "twig/twig": "<1.27",
         "kriswallsmith/spork": "<=0.2"
