@@ -36,6 +36,7 @@ class AsseticExtension extends Extension
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('assetic.xml');
+        $loader->load('commands.xml');
         $loader->load('templating_twig.xml');
         $loader->load('templating_php.xml');
 
