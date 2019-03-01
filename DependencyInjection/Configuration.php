@@ -46,9 +46,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
+        $builder = new TreeBuilder('assetic');
         $finder = new ExecutableFinder();
-        $rootNode = $builder->root('assetic');
+        $rootNode = method_exists(TreeBuilder::class, 'getRootNode') ? $builder->getRootNode() : $builder->root('assetic');
 
         $rootNode
             ->children()
