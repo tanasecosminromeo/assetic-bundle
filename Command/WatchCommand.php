@@ -25,10 +25,12 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class WatchCommand extends AbstractCommand
 {
+    protected static $defaultName = 'assetic:watch';
+
     protected function configure()
     {
         $this
-            ->setName('assetic:watch')
+            ->setName(static::$defaultName)
             ->setDescription('Dumps assets to the filesystem as their source files are modified')
             ->addArgument('write_to', InputArgument::OPTIONAL, 'Override the configured asset root')
             ->addOption('force', null, InputOption::VALUE_NONE, 'Force an initial generation of all assets')

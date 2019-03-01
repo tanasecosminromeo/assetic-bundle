@@ -28,12 +28,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DumpCommand extends AbstractCommand
 {
+    protected static $defaultName = 'assetic:dump';
     private $spork;
 
     protected function configure()
     {
         $this
-            ->setName('assetic:dump')
+            ->setName(static::$defaultName)
             ->setDescription('Dumps all assets to the filesystem')
             ->addArgument('write_to', InputArgument::OPTIONAL, 'Override the configured asset root')
             ->addOption('forks', null, InputOption::VALUE_REQUIRED, 'Fork work across many processes (requires kriswallsmith/spork)')
