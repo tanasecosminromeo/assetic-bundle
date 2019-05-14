@@ -52,7 +52,7 @@ class AsseticExtensionTest extends \PHPUnit\Framework\TestCase
             $this->markTestSkipped('Assetic is not available.');
         }
 
-        if (!class_exists('Twig_Environment')) {
+        if (!class_exists('\Twig\Environment')) {
             $this->markTestSkipped('Twig is not available.');
         }
 
@@ -78,8 +78,8 @@ class AsseticExtensionTest extends \PHPUnit\Framework\TestCase
         $this->container->register('templating.helper.router', $this->getMockClass('Symfony\\Bundle\\FrameworkBundle\\Templating\\Helper\\RouterHelper'))
             ->addArgument(new Definition($this->getMockClass('Symfony\\Component\\Routing\\RouterInterface')))
             ->setPublic(true);
-        $this->container->register('twig', 'Twig_Environment')
-            ->addArgument(new Definition($this->getMockClass('Twig_LoaderInterface')))
+        $this->container->register('twig', '\Twig\Environment')
+            ->addArgument(new Definition($this->getMockClass('\Twig\Loader\LoaderInterface')))
             ->setPublic(true);
         $this->container->setParameter('kernel.bundles', array());
         $this->container->setParameter('kernel.cache_dir', __DIR__);

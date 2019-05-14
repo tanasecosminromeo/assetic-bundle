@@ -48,7 +48,7 @@ class Configuration implements ConfigurationInterface
     {
         $builder = new TreeBuilder('assetic');
         $finder = new ExecutableFinder();
-        $rootNode = method_exists(TreeBuilder::class, 'getRootNode') ? $builder->getRootNode() : $builder->root('assetic');
+        $rootNode = method_exists('Symfony\Component\Config\Definition\Builder\TreeBuilder', 'getRootNode') ? $builder->getRootNode() : $builder->root('assetic');
 
         $rootNode
             ->children()
