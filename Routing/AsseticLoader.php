@@ -16,6 +16,7 @@ use Assetic\Factory\LazyAssetManager;
 use Symfony\Bundle\AsseticBundle\Config\AsseticResource;
 use Symfony\Bundle\AsseticBundle\Config\SelfCheckingAsseticResource;
 use Symfony\Component\Config\Loader\Loader;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -106,7 +107,8 @@ class AsseticLoader extends Loader
     private function loadRouteForAsset(RouteCollection $routes, AssetInterface $asset, $name, $pos = null)
     {
         $defaults = array(
-            '_controller' => 'assetic.controller::render',
+            // Deprecated in Symfony 4.1
+            '_controller' => version_compare(Kernel::VERSION, '4.1', '>=') ? 'assetic.controller::render' : 'assetic.controller:render',
             'name'        => $name,
             'pos'         => $pos,
         );
