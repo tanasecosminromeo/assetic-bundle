@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit colors="true" bootstrap="./vendor/autoload.php">
+    <php>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
+    </php>
+
     <testsuites>
         <testsuite name="AsseticBundle Test Suite">
             <directory>./Tests/</directory>
@@ -17,4 +21,5 @@
             </exclude>
         </whitelist>
     </filter>
+
 </phpunit>
