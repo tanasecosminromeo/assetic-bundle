@@ -26,5 +26,8 @@ matrix:
 install:
     - test "$SYMFONY_VERSION" -eq 4 || composer require --no-update "symfony/lts:^$SYMFONY_VERSION"
     - composer update
+    - gem install sass
 
-script: bin/phpunit -v
+script:
+    - bin/phpunit -v
+    - Tests/console assetic:dump
